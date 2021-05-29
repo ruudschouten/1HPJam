@@ -10,6 +10,12 @@ namespace Characters
         [SerializeField] private Player player;
         [SerializeField] private EnemyMovement movement;
 
+        public Player Player
+        {
+            get => player;
+            set => player = value;
+        }
+        public EnemyMovement Movement => movement;
 
         private void Update()
         {

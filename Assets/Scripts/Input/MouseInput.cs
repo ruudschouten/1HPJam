@@ -46,21 +46,13 @@ namespace Input
             if (playerLooksAtMouse)
             {
                 // TODO: Fix this later.
-                var angle = GetAngleAtTarget(_cursorPosition, player.transform.localPosition) - angleOffset;
+                var angle = Helper.GetAngleAtTarget(_cursorPosition, player.transform.localPosition) - angleOffset;
                 var eulerAngles = Quaternion.Euler(0, 0, angle).eulerAngles;
                 player.transform.localRotation = Quaternion.Euler(eulerAngles.x, eulerAngles.y, -eulerAngles.z);
                 cursor.transform.localRotation = Quaternion.Euler(eulerAngles.x, eulerAngles.y, -eulerAngles.z);
             }
 
             cursor.transform.position = _cursorPosition;
-        }
-
-        public float GetAngleAtTarget(Vector3 targetPosition, Vector3 sourcePosition)
-        {
-            var radians = Mathf.Atan2(targetPosition.y - sourcePosition.y, targetPosition.x - sourcePosition.x);
-            var degrees = (180 / Mathf.PI) * radians;
-
-            return degrees;
         }
     }
 }

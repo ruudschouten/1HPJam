@@ -12,9 +12,24 @@ namespace Characters
         [SerializeField] protected Resource resource;
 
         [Foldout("Events")] [SerializeField] private UnityEvent onHit;
-        [Foldout("Events")] [SerializeField] private UnityEvent onDeath;
+        [Foldout("Events")] [SerializeField] private CharacterEvent onDeath;
         [Foldout("Events")] [SerializeField] private CharacterEvent onCharacterHit;
 
+        public bool IsAlive => health > 0;
+        public CharacterEvent OnDeath => onDeath;
+        
         // TODO: Add functions for collision
+
+        public void GetHit()
+        {
+            health = 0;
+            onHit.Invoke();
+            onDeath.Invoke(this);
+        }
+
+        public void Die()
+        {
+            Destroy(gameObject);
+        }
     }
 }

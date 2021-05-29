@@ -48,8 +48,7 @@ namespace Buildings
                 if (string.IsNullOrEmpty(hit.transform.tag)) continue;
                 if (hit.transform.CompareTag(BuildingTag)) return false; // Another building is already placed here.
                 if (!hit.transform.CompareTag(PlacementTag)) continue;
-
-                //TODO: Should be replaced if performance gets really bad.
+                
                 var areaType = hit.transform.GetComponent<PlacementArea>().AreaType;
                 return placementConstraint.Equals(areaType);
             }
@@ -63,10 +62,9 @@ namespace Buildings
             resource.UseResource(type, buildCost);
 
             // Then place it.
-            var building = Instantiate(this, buildingParent);
             var position = cam.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
             position.z = 0;
-            building.transform.position = position;
+            Instantiate(this, position, Quaternion.identity, buildingParent);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -81,8 +79,6 @@ namespace Buildings
 
                 _player.AddBuildingInRange(this);
             }
-
-            // TODO: Consider if this needs to also look at other buildings.
         }
 
         private void OnTriggerExit2D(Collider2D other)

@@ -7,9 +7,15 @@ namespace Input
     public class EnemyMovement : Movement
     {
         [SerializeField] private PathCreator pathCreator;
-        [SerializeField] private EndOfPathInstruction endOfPathInstruction;
+        [SerializeField] private EndOfPathInstruction endOfPathInstruction = EndOfPathInstruction.Stop;
 
         private float _distanceTravelled;
+
+        public PathCreator Path
+        {
+            get => pathCreator;
+            set => pathCreator = value;
+        }
 
         public void TravelToNextPoint()
         {
