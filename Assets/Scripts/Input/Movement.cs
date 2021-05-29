@@ -9,7 +9,5 @@ namespace Characters
     {
         [SerializeField] protected float movementSpeed;
         [SerializeField] protected MonoRenderer character;
-
-        [SerializeField] protected MovementEvent onMove;
     }
 }

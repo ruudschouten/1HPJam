@@ -14,8 +14,6 @@ namespace Characters
         [Foldout("Events")] [SerializeField] private UnityEvent onHit;
         [Foldout("Events")] [SerializeField] private UnityEvent onDeath;
         [Foldout("Events")] [SerializeField] private CharacterEvent onCharacterHit;
-        [Foldout("Events")] [SerializeField] private CharacterIntEvent onCharacterDamaged;
-        [Foldout("Events")] [SerializeField] private UnityEvent<float> onNearDodge;
 
         // TODO: Add functions for collision
     }

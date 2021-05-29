@@ -1,7 +1,6 @@
 ﻿using Characters;
 using Core;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace Input
 {
