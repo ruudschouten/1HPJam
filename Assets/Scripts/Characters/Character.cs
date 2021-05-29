@@ -1,5 +1,6 @@
 ﻿using Core;
 using Events;
+using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -7,14 +8,15 @@ namespace Characters
 {
     public class Character : MonoRenderer
     {
-        [SerializeField] private int health = 1;
-        [SerializeField] private Resource resource;
+        [SerializeField] protected int health = 1;
+        [SerializeField] protected Resource resource;
 
-        [Header("Events")]
-        [SerializeField] private UnityEvent onHit;
-        [SerializeField] private UnityEvent onDeath;
-        [SerializeField] private CharacterEvent onCharacterHit;
-        [SerializeField] private CharacterIntEvent onCharacterDamaged;
-        [SerializeField] private UnityEvent<float> onNearDodge;
+        [Foldout("Events")] [SerializeField] private UnityEvent onHit;
+        [Foldout("Events")] [SerializeField] private UnityEvent onDeath;
+        [Foldout("Events")] [SerializeField] private CharacterEvent onCharacterHit;
+        [Foldout("Events")] [SerializeField] private CharacterIntEvent onCharacterDamaged;
+        [Foldout("Events")] [SerializeField] private UnityEvent<float> onNearDodge;
+
+        // TODO: Add functions for collision
     }
 }

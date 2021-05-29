@@ -8,7 +8,7 @@ namespace Combat
 {
     public class Ability : MonoBehaviour
     {
-        [SerializeField] private string name;
+        [SerializeField] private string abilityName;
         [SerializeField] private ResourceType resourceType;
         [SerializeField] private int resourceAmountToUse;
         [SerializeField] private bool hasCooldown;
@@ -18,13 +18,19 @@ namespace Combat
         [SerializeField] private AbilityEvent onAbilityUse;
         [SerializeField] private AbilityEvent onAbilityCooldownStart;
         [SerializeField] private AbilityTimeEvent onAbilityCooldownUpdated;
+        [SerializeField] private AbilityEvent onAbilityCooldownOver;
 
-        private float _currentCooldown = -1;
-        private bool _isOnCooldown = false;
+        private float _currentCooldown;
+        private bool _isOnCooldown;
 
-        public void Use()
+        public void Use(Resource resource)
         {
-            // TODO do this :)
+            Debug.Log($"You have pressed the button for {abilityName}");
+
+            if (!CanUseAbility(resource))
+            {
+                return;
+            }
             
             onAbilityUse.Invoke(this);
             if (hasCooldown)
@@ -33,9 +39,9 @@ namespace Combat
             }
         }
 
-        private bool CanUseAbility(ResourceType type, Resource resource)
+        private bool CanUseAbility(Resource resource)
         {
-            return resource.HasRequiredResource(type, resourceAmountToUse);
+            return resource.HasRequiredResource(resourceType, resourceAmountToUse);
         }
 
         private IEnumerator CooldownRoutine()
@@ -52,7 +58,10 @@ namespace Combat
                 {
                     _isOnCooldown = false;
                 }
+
+                yield return null;
             }
+            onAbilityCooldownOver.Invoke(this);
         }
     }
 }

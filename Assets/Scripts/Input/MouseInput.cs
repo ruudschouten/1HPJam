@@ -1,47 +1,58 @@
-﻿using UnityEngine;
-using UnityEngine.Events;
+﻿using Core;
+using Events;
+using UnityEngine;
 
 namespace Input
 {
     public class MouseInput : MonoBehaviour
     {
         [SerializeField] private Camera camera;
-        [SerializeField] private Transform player;
+        [SerializeField] private MonoRenderer player;
         [SerializeField] private float angleOffset;
         [SerializeField] private SpriteRenderer cursor;
-        [SerializeField] private bool lookAtMouse;
+        [SerializeField] private bool playerLooksAtMouse;
 
-        [SerializeField] private UnityEvent onLeftMouseButtonPressed;
+        [SerializeField] private IntegerEvent onMouseButtonPressed;
 
         private Vector2 _cursorPosition;
-        private bool _currentLeftMouseDown;
-        private bool _previousLeftMouseDown;
+
+        private const int SupportedMouseButtons = 6;
+        private readonly bool[] _currentMouseDown = new bool[SupportedMouseButtons];
+        private readonly bool[] _previousMouseDown = new bool[SupportedMouseButtons];
 
         public void Update()
         {
-            _currentLeftMouseDown = UnityEngine.Input.GetMouseButtonDown(0);
-
-            if (_currentLeftMouseDown && _currentLeftMouseDown != _previousLeftMouseDown)
+            for (var i = 0; i < SupportedMouseButtons; i++)
             {
-                onLeftMouseButtonPressed.Invoke();
+                _currentMouseDown[i] = UnityEngine.Input.GetMouseButtonDown(i);
+
+                if (_currentMouseDown[i] && _currentMouseDown[i] != _previousMouseDown[i])
+                {
+                    onMouseButtonPressed.Invoke(i);
+                }
             }
 
-            if (lookAtMouse)
-            {
-                LookAtMouse();
-            }
+            LookAtMouse();
 
-            _previousLeftMouseDown = _currentLeftMouseDown;
+            for (var i = 0; i < SupportedMouseButtons; i++)
+            {
+                _previousMouseDown[i] = _currentMouseDown[i];
+            }
         }
 
         public void LookAtMouse()
         {
             _cursorPosition = camera.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
-            var angle = GetAngleAtTarget(_cursorPosition, player.transform.localPosition) - angleOffset;
-            player.transform.localRotation = Quaternion.Euler(0, 0, angle);
+            if (playerLooksAtMouse)
+            {
+                // TODO: Fix this later.
+                var angle = GetAngleAtTarget(_cursorPosition, player.transform.localPosition) - angleOffset;
+                var eulerAngles = Quaternion.Euler(0, 0, angle).eulerAngles;
+                player.transform.localRotation = Quaternion.Euler(eulerAngles.x, eulerAngles.y, -eulerAngles.z);
+                cursor.transform.localRotation = Quaternion.Euler(eulerAngles.x, eulerAngles.y, -eulerAngles.z);
+            }
 
             cursor.transform.position = _cursorPosition;
-            cursor.transform.localRotation = Quaternion.Euler(0, 0, -angle);
         }
 
         public float GetAngleAtTarget(Vector3 targetPosition, Vector3 sourcePosition)

@@ -1,29 +1,47 @@
-﻿using Combat;
-using Events;
+﻿using Characters;
+using Combat;
+using Core;
 using UnityEngine;
 
 namespace Input
 {
     public class AbilityInputs : MonoBehaviour
     {
-        [SerializeField] private KeyCode offensiveAbilityCode = KeyCode.E;
-        [SerializeField] private KeyCode defensiveAbilityCode = KeyCode.R;
-        [SerializeField] private KeyCode mobilityAbilityCode = KeyCode.LeftShift;
+        [SerializeField] private Player player;
+        [SerializeField] private Resource resource;
+        [SerializeField] private int offensiveAbilityKey = 0;
+        [SerializeField] private int secondaryOffensiveAbilityKey = 1;
         [SerializeField] private KeyCode utilityAbilityCode = KeyCode.Q;
 
         [SerializeField] private Ability offensiveAbility;
-        [SerializeField] private Ability defensiveAbility;
-        [SerializeField] private Ability mobilityAbility;
+        [SerializeField] private Ability secondaryOffensiveAbility;
         [SerializeField] private Ability utilityAbility;
-
-        [SerializeField] private KeyCodeEvent onKeyPress;
 
         public void Update()
         {
-            if (UnityEngine.Input.GetKeyDown(offensiveAbilityCode)) { offensiveAbility.Use(); }
-            if (UnityEngine.Input.GetKeyDown(defensiveAbilityCode)) { defensiveAbility.Use(); }
-            if (UnityEngine.Input.GetKeyDown(mobilityAbilityCode)) { mobilityAbility.Use(); }
-            if (UnityEngine.Input.GetKeyDown(utilityAbilityCode)) { utilityAbility.Use(); }
+            if (player.GameState != GameState.Combat)
+            {
+                return;
+            } 
+            if (UnityEngine.Input.GetKeyDown(utilityAbilityCode)) { utilityAbility.Use(resource); }
+        }
+
+        public void OnMouseClick(int mouseButton)
+        {
+            if (player.GameState != GameState.Combat)
+            {
+                return;
+            }
+
+            if (mouseButton == offensiveAbilityKey)
+            {
+                offensiveAbility.Use(resource);
+            }
+
+            if (mouseButton == secondaryOffensiveAbilityKey)
+            {
+                secondaryOffensiveAbility.Use(resource);
+            }
         }
     }
 }
