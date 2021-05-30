@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Buildings;
 using Core;
 using Events;
@@ -21,11 +22,8 @@ namespace Characters
         [SerializeField] [CanBeNull] private BaseBuilding activeBuilding;
         [SerializeField] private List<BaseBuilding> buildingsInRange;
 
-        [Foldout("Building Events")] [SerializeField]
-        private BuildingEvent onBuildingInRange;
-
-        [Foldout("Building Events")] [SerializeField]
-        private BuildingEvent onBuildingOutOfRange;
+        [Foldout("Building Events")] [SerializeField] private BuildingEvent onBuildingInRange;
+        [Foldout("Building Events")] [SerializeField] private BuildingEvent onBuildingOutOfRange;
 
         public GameState GameState
         {

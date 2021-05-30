@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using Characters;
+using Combat;
+using Core;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -11,6 +13,12 @@ namespace Buildings
     public class Behaviour : MonoBehaviour
     {
         [SerializeField] private TargetType targetType;
+        
+        [SerializeField] private BulletBehaviour bulletPrefab;
+        [SerializeField] private Transform aimIndicatorHolder;
+        [SerializeField] private Transform aimIndicator;
+        [SerializeField] private float aimIndicatorAngleOffset = 90;
+        
         [SerializeField] private float attackSpeed = 2.5f;
         [SerializeField] private float timeScale = 1;
 
@@ -28,9 +36,6 @@ namespace Buildings
             get => timeScale;
             set => timeScale = value;
         }
-        
-        // TODO:
-        // Attack at interval
 
         private void Update()
         {
@@ -49,6 +54,9 @@ namespace Buildings
 
             if (_target == null) return;
 
+            var angle = Helper.GetAngleAtTarget(_target.transform.position, transform.position);
+            aimIndicatorHolder.rotation = Quaternion.Euler(0, 0, angle - aimIndicatorAngleOffset);
+            
             // Attack
             Attack();
         }
@@ -59,9 +67,9 @@ namespace Buildings
 
             Debug.Log($"Attacked {_target.name}");
             // Show animation
-            
-            //TODO: Instantiate bullet or something
-            _target.GetHit();
+
+            var bullet = Instantiate(bulletPrefab, aimIndicator.position, Quaternion.identity);
+            bullet.StartChasing(_target);
 
             StartCoroutine(CooldownRoutine());
         }

@@ -9,18 +9,11 @@ namespace Core
     {
         [SerializeField] protected new Rigidbody2D rigidbody;
         [SerializeField] protected new SpriteRenderer renderer;
-        [SerializeField] protected new Collider2D collider;
 
         public Rigidbody2D Rigidbody
         {
             get => rigidbody;
             set => rigidbody = value;
-        }
-
-        public Collider2D Collider
-        {
-            get => collider;
-            set => collider = value;
         }
 
         public SpriteRenderer Renderer

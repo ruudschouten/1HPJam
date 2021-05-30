@@ -1,5 +1,4 @@
-﻿using System;
-using Input;
+﻿using Input;
 using UnityEngine;
 
 namespace Characters
@@ -10,6 +9,7 @@ namespace Characters
         [SerializeField] private EnemyMovement movement;
 
         private const string PlayerTag = "Player";
+        private const string FinishTag = "FinishLine";
         
         public Player Player
         {
@@ -27,6 +27,11 @@ namespace Characters
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag(PlayerTag))
+            {
+                player.GetHit();
+            }
+
+            if (other.CompareTag(FinishTag))
             {
                 player.GetHit();
             }

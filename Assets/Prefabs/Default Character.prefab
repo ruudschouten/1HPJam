@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1719463508544124084}
   - component: {fileID: 2136890537284534027}
+  - component: {fileID: 3339494262570546487}
   - component: {fileID: 1719463508544124085}
   - component: {fileID: 1719463508544124083}
   - component: {fileID: 7484062198607322762}
@@ -30,8 +31,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 5743591419456783672}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1719463508544124083}
   renderer: {fileID: 1719463508544124085}
-  collider: {fileID: 0}
+  collider: {fileID: 7484062198607322762}
   health: 1
   resource: {fileID: 0}
   onHit:
@@ -74,7 +74,23 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   player: {fileID: 0}
-  movement: {fileID: 2278692036329118680}
+  movement: {fileID: 3339494262570546487}
+--- !u!114 &3339494262570546487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1719463508544124087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e80903eeeec3472086b43fe1fed319a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 1.5
+  characterRenderer: {fileID: 2136890537284534027}
+  pathCreator: {fileID: 0}
+  endOfPathInstruction: 2
 --- !u!212 &1719463508544124085
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -163,50 +179,3 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.040314525}
   serializedVersion: 2
   m_Radius: 0.3096855
---- !u!1 &8196853078176740519
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 5743591419456783672}
-  - component: {fileID: 2278692036329118680}
-  m_Layer: 0
-  m_Name: Movement
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &5743591419456783672
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196853078176740519}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1719463508544124084}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2278692036329118680
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8196853078176740519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e80903eeeec3472086b43fe1fed319a1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1.5
-  character: {fileID: 2136890537284534027}
-  pathCreator: {fileID: 0}
-  endOfPathInstruction: 2
