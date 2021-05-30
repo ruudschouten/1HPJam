@@ -29,12 +29,12 @@ namespace Combat
 
         public void Use(Resource resource)
         {
-            Debug.Log($"You have pressed the button for {name}");
-
             if (!CanUseAbility(resource))
             {
                 return;
             }
+
+            if (_isOnCooldown) return;
 
             if (functionality.IsActive) return;
 
@@ -67,9 +67,9 @@ namespace Combat
                 {
                     _isOnCooldown = false;
                 }
-                
+
                 yield return null;
-                
+
                 percentage = 1f - (_currentCooldown / cooldown);
                 cooldownImage.fillAmount = percentage;
 
