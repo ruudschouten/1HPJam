@@ -33,21 +33,25 @@ namespace Combat
                 onWaveCompleted.Invoke();
             }
         }
-        
-        public void StartWave(Player player, Transform container, PathCreator path)
+
+        public void StartWave(Player player, Transform container, IReadOnlyList<PathCreator> paths)
         {
-            StartCoroutine(SpawnRoutine(player, container, path));
+            StartCoroutine(SpawnRoutine(player, container, paths));
         }
 
-        private IEnumerator SpawnRoutine(Player player, Transform container, PathCreator path)
+        private IEnumerator SpawnRoutine(Player player, Transform container, IReadOnlyList<PathCreator> paths)
         {
             yield return null;
+            var pathIndex = 0;
             foreach (var enemy in enemiesToSpawnPerInterval)
             {
                 yield return null;
                 var prefab = Instantiate(enemy, container);
                 prefab.Player = player;
-                prefab.Movement.Path = path;
+                prefab.Movement.Path = paths[pathIndex];
+
+                pathIndex = (paths.Count - 1) > pathIndex ? pathIndex + 1 : 0;
+
                 prefab.OnDeath.AddListener(call => EnemyKilled(prefab));
                 _spawnedEnemies.Add(prefab);
                 yield return new WaitForSeconds(interval);

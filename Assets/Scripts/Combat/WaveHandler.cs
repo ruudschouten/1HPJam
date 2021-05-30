@@ -14,7 +14,7 @@ namespace Combat
         [SerializeField] private Transform enemyContainer;
         [SerializeField] private TMP_Text countdownText;
         [SerializeField] private Player player;
-        [SerializeField] private PathCreator path;
+        [SerializeField] private PathCreator[] paths;
 
         private int _activeWave = -1;
 
@@ -40,7 +40,7 @@ namespace Combat
 
         private void StartWave()
         {
-            ActiveWave.StartWave(player, enemyContainer, path);
+            ActiveWave.StartWave(player, enemyContainer, paths);
         }
 
         private bool HasNextWave()
