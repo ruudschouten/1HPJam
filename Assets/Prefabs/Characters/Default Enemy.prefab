@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1719463508544124083}
   - component: {fileID: 7484062198607322762}
   m_Layer: 0
-  m_Name: Default Character
+  m_Name: Default Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1719463508544124083}
   renderer: {fileID: 1719463508544124085}
-  collider: {fileID: 7484062198607322762}
   health: 1
   resource: {fileID: 0}
   onHit:
@@ -89,6 +88,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 1.5
   characterRenderer: {fileID: 2136890537284534027}
+  parent: {fileID: 1719463508544124084}
   pathCreator: {fileID: 0}
   endOfPathInstruction: 2
 --- !u!212 &1719463508544124085

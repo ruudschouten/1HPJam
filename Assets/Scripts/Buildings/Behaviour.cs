@@ -102,7 +102,7 @@ namespace Buildings
         {
             if (enemy == null) return;
             var distance = Vector2.Distance(transform.position, enemy.transform.position);
-            if (_target == null || distance <= _currentTargetDistance)
+            if (_target == null || distance >= _currentTargetDistance)
             {
                 _target = enemy;
                 _currentTargetDistance = distance;
@@ -113,7 +113,7 @@ namespace Buildings
         {
             if (enemy == null) return;
             var distance = Vector2.Distance(transform.position, enemy.transform.position);
-            if (_target == null || distance >= _currentTargetDistance)
+            if (_target == null || distance <= _currentTargetDistance)
             {
                 _target = enemy;
                 _currentTargetDistance = distance;

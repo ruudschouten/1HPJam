@@ -61,6 +61,11 @@ namespace Combat
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (other.CompareTag("Shield"))
+            {
+                Destroy(gameObject);
+            }
+            
             if (!other.CompareTag("Player") && !other.CompareTag("Enemy")) return;
 
             other.GetComponent<Character>().GetHit();
