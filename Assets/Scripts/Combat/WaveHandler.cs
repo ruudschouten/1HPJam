@@ -16,28 +16,25 @@ namespace Combat
         [SerializeField] private Player player;
         [SerializeField] private PathCreator path;
 
-        private int _activeWave = 0;
+        private int _activeWave = -1;
 
         private Wave ActiveWave => waves[_activeWave];
 
         public void Start()
         {
-            Debug.Log("Starting first wave");
-            StartCoroutine(StartNextWaveDelayed());
+            StartNextWave();
         }
 
         public void StartNextWave() 
         {
-            if (ActiveWave.WaveComplete)
+            if (HasNextWave())
             {
-                if (HasNextWave())
-                {
-                    StartCoroutine(StartNextWaveDelayed());                    
-                }
-                else
-                {
-                    // TODO: Either game complete, or next level.
-                }
+                _activeWave++;
+                StartCoroutine(StartNextWaveDelayed());                    
+            }
+            else
+            {
+                // TODO: Either game complete, or next level.
             }
         }
 
@@ -64,8 +61,6 @@ namespace Combat
                 remaining = ActiveWave.TimeToWaitBeforeStartingWave - time;
                 countdownText.SetText(remaining.ToString("#"));
             }
-
-            if (HasNextWave()) _activeWave++;
 
             yield return null;
             
