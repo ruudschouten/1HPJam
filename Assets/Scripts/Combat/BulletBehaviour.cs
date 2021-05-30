@@ -7,11 +7,15 @@ namespace Combat
     public class BulletBehaviour : MonoRenderer
     {
         [SerializeField] private float speed;
-        [SerializeField] private float speedIncrease = 1.0125f;
+        [SerializeField] private float speedIncrease = 1.25f;
         [SerializeField] private Character target;
         [SerializeField] private float angleOffset = 180;
 
-        private bool _hasTarget = true;
+        private bool _hasTarget;
+        private float _chaseTimer;
+
+        // Stay alive for 10 seconds.
+        private const float DestroyTimer = 10f;
         private float _timer;
 
         public void StartChasing(Character targetToChase)
@@ -22,24 +26,36 @@ namespace Combat
 
         public void Update()
         {
-            if (!_hasTarget) return;
+            _timer += Time.deltaTime;
+            // Increase speed every tick
+            speed += speedIncrease * Time.deltaTime;
 
-            if (target == null)
+            if (_timer >= DestroyTimer)
             {
                 Destroy(gameObject);
                 return;
             }
-            
-            // Increase speed every tick
-            speed *= speedIncrease;
-            
-            _timer = Time.deltaTime * speed;
-            
+
+            if (!_hasTarget || target == null)
+            {
+                // Move forward
+                transform.position += transform.right * (Time.deltaTime * speed);
+            }
+            else
+            {
+                ChaseTarget();
+            }
+        }
+
+        private void ChaseTarget()
+        {
+            _chaseTimer = Time.deltaTime * speed;
+
             var angle = Helper.GetAngleAtTarget(target.transform.position, transform.position);
-            
+
             transform.rotation = Quaternion.Euler(0, 0, angle - angleOffset);
-            
-            var position = Vector2.Lerp(transform.position, target.transform.position, _timer);
+
+            var position = Vector2.Lerp(transform.position, target.transform.position, _chaseTimer);
             transform.position = position;
         }
 

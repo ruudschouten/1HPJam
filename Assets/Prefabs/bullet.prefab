@@ -136,6 +136,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 7950437903870030341}
   renderer: {fileID: 7950437903870030347}
-  speed: 5
+  speed: 15
+  speedIncrease: 5
   target: {fileID: 0}
   angleOffset: 90

@@ -56,17 +56,13 @@ namespace Buildings
 
             var angle = Helper.GetAngleAtTarget(_target.transform.position, transform.position);
             aimIndicatorHolder.rotation = Quaternion.Euler(0, 0, angle - aimIndicatorAngleOffset);
-            
-            // Attack
+
             Attack();
         }
 
         private void Attack()
         {
             if (_isOnCooldown) return;
-
-            Debug.Log($"Attacked {_target.name}");
-            // Show animation
 
             var bullet = Instantiate(bulletPrefab, aimIndicator.position, Quaternion.identity);
             bullet.StartChasing(_target);

@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 12787215}
-  - component: {fileID: 12787216}
   m_Layer: 0
   m_Name: Functionality
   m_TagString: Untagged
@@ -31,21 +30,6 @@ Transform:
   m_Father: {fileID: 1724437230}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &12787216
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 12787214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 910ddc1e77d94fc8a8126bd598bbefbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 1.5
-  buildTimeScale: 5
-  movementSpeedScale: 1.5
 --- !u!1 &145022455
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 669577062675056037}
-  functionality: {fileID: 12787216}
+  functionality: {fileID: 0}
   resourceAmountToUse: 0
   hasCooldown: 1
   cooldown: 10
@@ -553,7 +537,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 4710316375287060916}
   renderer: {fileID: 4710316375287060914}
-  collider: {fileID: 0}
   health: 1
   resource: {fileID: 4710316374451626004}
   onHit:
