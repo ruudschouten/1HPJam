@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2136890537284534027}
   - component: {fileID: 1719463508544124085}
   - component: {fileID: 1719463508544124083}
-  - component: {fileID: 1719463508544124086}
+  - component: {fileID: 7484062198607322762}
   m_Layer: 0
   m_Name: Default Character
   m_TagString: Enemy
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rigidbody: {fileID: 1719463508544124083}
   renderer: {fileID: 1719463508544124085}
-  collider: {fileID: 1719463508544124086}
+  collider: {fileID: 0}
   health: 1
   resource: {fileID: 0}
   onHit:
@@ -147,8 +147,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!61 &1719463508544124086
-BoxCollider2D:
+--- !u!58 &7484062198607322762
+CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -157,22 +157,12 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.96, y: 0.96}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.040314525}
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Radius: 0.3096855
 --- !u!1 &8196853078176740519
 GameObject:
   m_ObjectHideFlags: 0

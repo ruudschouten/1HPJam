@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Buildings;
 using Core;
 using Events;
+using Input;
 using JetBrains.Annotations;
 using NaughtyAttributes;
 using UnityEngine;
@@ -13,6 +13,7 @@ namespace Characters
     {
         [SerializeField] private Camera cam;
         [SerializeField] private GameState _gameState;
+        [SerializeField] private PlayerMovement movement;
         [SerializeField] private SpriteRenderer affectedArea;
         [SerializeField] private Color defaultColor;
         [SerializeField] private Color validPlacementColor;
@@ -32,12 +33,15 @@ namespace Characters
             set => _gameState = value;
         }
 
-        [CanBeNull]
+        public PlayerMovement Movement => movement;
+
         public BaseBuilding ActiveBuilding
         {
             get => activeBuilding;
             set => activeBuilding = value;
         }
+
+        public List<BaseBuilding> BuildingsInRange => buildingsInRange;
 
         public Camera Cam => cam;
 
@@ -70,11 +74,13 @@ namespace Characters
                 affectedArea.color = defaultColor;
                 return;
             }
+
             if (activeBuilding == null)
             {
                 affectedArea.color = defaultColor;
                 return;
             }
+
             if (activeBuilding.BuildingState != BuildingState.Placement)
             {
                 affectedArea.color = defaultColor;

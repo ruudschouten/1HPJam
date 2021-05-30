@@ -1,13 +1,13 @@
-﻿using System;
-using Core;
-using Events;
+﻿using Core;
 using UnityEngine;
 
-namespace Characters
+namespace Input
 {
     public class Movement : MonoBehaviour
     {
         [SerializeField] protected float movementSpeed;
-        [SerializeField] protected MonoRenderer character;
+        [SerializeField] protected MonoRenderer characterRenderer;
+
+        public float TimeScale { get; set; } = 1;
     }
 }

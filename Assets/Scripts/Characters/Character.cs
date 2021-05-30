@@ -17,8 +17,6 @@ namespace Characters
 
         public bool IsAlive => health > 0;
         public CharacterEvent OnDeath => onDeath;
-        
-        // TODO: Add functions for collision
 
         public void GetHit()
         {

@@ -1,5 +1,4 @@
 ﻿using System;
-using Core;
 using Input;
 using UnityEngine;
 
@@ -10,6 +9,8 @@ namespace Characters
         [SerializeField] private Player player;
         [SerializeField] private EnemyMovement movement;
 
+        private const string PlayerTag = "Player";
+        
         public Player Player
         {
             get => player;
@@ -19,11 +20,16 @@ namespace Characters
 
         private void Update()
         {
-            // Only update and move if the player is in Combat mode.
-            if (player.GameState != GameState.Combat) return;
-            
             // Follow the path laid out.
             movement.TravelToNextPoint();
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag(PlayerTag))
+            {
+                player.GetHit();
+            }
         }
     }
 }

@@ -20,7 +20,7 @@ namespace Input
         public void TravelToNextPoint()
         {
             _distanceTravelled += movementSpeed * Time.deltaTime; 
-            character.transform.position = pathCreator.path.GetPointAtDistance(_distanceTravelled, endOfPathInstruction);
+            characterRenderer.transform.position = pathCreator.path.GetPointAtDistance(_distanceTravelled, endOfPathInstruction);
         }
     }
 }

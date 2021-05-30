@@ -1,4 +1,6 @@
-﻿using Characters;
+﻿using System.Collections;
+using Characters;
+using Combat;
 using Core;
 using UnityEngine;
 
@@ -11,6 +13,9 @@ namespace Input
         [SerializeField] private Transform buildParent;
         [SerializeField] private RectTransform buildMenu;
         [SerializeField] private SpriteRenderer heldItem;
+
+        [Space]
+        [Header("Keys")]
         [SerializeField] private KeyCode placeKey = KeyCode.E;
         [SerializeField] private KeyCode showBuildMenu = KeyCode.Tab;
 

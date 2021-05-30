@@ -50,9 +50,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58844fb00a2a44c7bb1cce2711ce496c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  building: {fileID: 8235518967008644597}
   targetType: 0
   attackSpeed: 5
+  timeSpeed: 1
 --- !u!58 &7867704399915936287
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -166,8 +166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e4f157e1a6ffdca4b968bd7cb97caddf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
   buildCost: 3
+  behaviour: {fileID: 7985978910748751453}
   placementConstraint: 0
 --- !u!212 &8235518967008644599
 SpriteRenderer:

@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Characters;
-using Core;
 using JetBrains.Annotations;
 using UnityEngine;
 
@@ -11,9 +10,9 @@ namespace Buildings
     [RequireComponent(typeof(CircleCollider2D))]
     public class Behaviour : MonoBehaviour
     {
-        [SerializeField] private Transform building;
         [SerializeField] private TargetType targetType;
         [SerializeField] private float attackSpeed = 2.5f;
+        [SerializeField] private float timeScale = 1;
 
         private List<Enemy> _enemiesInRange = new List<Enemy>();
         [CanBeNull] private Enemy _target;
@@ -24,8 +23,13 @@ namespace Buildings
 
         private const string EnemyTag = "Enemy";
 
+        public float TimeScale
+        {
+            get => timeScale;
+            set => timeScale = value;
+        }
+        
         // TODO:
-        // Look at enemy
         // Attack at interval
 
         private void Update()
@@ -69,7 +73,7 @@ namespace Buildings
             yield return null;
             while (_isOnCooldown)
             {
-                _currentCooldown += Time.deltaTime;
+                _currentCooldown += Time.deltaTime * timeScale;
                 if (Math.Abs(_currentCooldown - attackSpeed) < 0.01f)
                 {
                     _isOnCooldown = false;

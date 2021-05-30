@@ -5,6 +5,7 @@ namespace Input
 {
     public class PlayerMovement : Movement
     {
+        [SerializeField] private Player player;
         private float _horizontal;
         private float _vertical;
 
@@ -16,8 +17,11 @@ namespace Input
 
         private void FixedUpdate()
         {
-            var movementVector = new Vector2(_horizontal * movementSpeed, _vertical * movementSpeed);
-            character.Rigidbody.velocity = movementVector;
+            if (!player.IsAlive) return;
+
+            var movementVector = new Vector2((_horizontal * movementSpeed) * TimeScale,
+                (_vertical * movementSpeed) * TimeScale);
+            characterRenderer.Rigidbody.velocity = movementVector;
         }
     }
 }

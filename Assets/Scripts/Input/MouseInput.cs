@@ -6,7 +6,7 @@ namespace Input
 {
     public class MouseInput : MonoBehaviour
     {
-        [SerializeField] private Camera camera;
+        [SerializeField] private Camera cam;
         [SerializeField] private MonoRenderer player;
         [SerializeField] private float angleOffset;
         [SerializeField] private SpriteRenderer cursor;
@@ -42,7 +42,7 @@ namespace Input
 
         public void LookAtMouse()
         {
-            _cursorPosition = camera.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
+            _cursorPosition = cam.ScreenToWorldPoint(UnityEngine.Input.mousePosition);
             if (playerLooksAtMouse)
             {
                 // TODO: Fix this later.

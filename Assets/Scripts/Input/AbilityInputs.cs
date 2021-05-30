@@ -28,7 +28,7 @@ namespace Input
 
         public void OnMouseClick(int mouseButton)
         {
-            if (player.GameState != GameState.Combat)
+            if (player.GameState == GameState.Building)
             {
                 return;
             }
