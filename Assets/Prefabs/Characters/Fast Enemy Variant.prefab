@@ -67,6 +67,10 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1719463508544124085, guid: 4009976c838d6154e9f28a8dc0d4452b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f38c5e21ecc47504db4dcd6efa3000cc, type: 3}
     - target: {fileID: 1719463508544124087, guid: 4009976c838d6154e9f28a8dc0d4452b, type: 3}
       propertyPath: m_Name
       value: Fast Enemy Variant
@@ -74,6 +78,14 @@ PrefabInstance:
     - target: {fileID: 3339494262570546487, guid: 4009976c838d6154e9f28a8dc0d4452b, type: 3}
       propertyPath: movementSpeed
       value: 2.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484062198607322762, guid: 4009976c838d6154e9f28a8dc0d4452b, type: 3}
+      propertyPath: m_Radius
+      value: 0.35273796
+      objectReference: {fileID: 0}
+    - target: {fileID: 7484062198607322762, guid: 4009976c838d6154e9f28a8dc0d4452b, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.03224218
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4009976c838d6154e9f28a8dc0d4452b, type: 3}

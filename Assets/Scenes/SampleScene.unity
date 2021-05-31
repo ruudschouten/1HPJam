@@ -2355,7 +2355,7 @@ MonoBehaviour:
   - {fileID: 2136890537284534027, guid: 4009976c838d6154e9f28a8dc0d4452b, type: 3}
   - {fileID: 2136890537284534027, guid: 4009976c838d6154e9f28a8dc0d4452b, type: 3}
   timeToWaitBeforeStartingWave: 5
-  interval: 0.5
+  interval: 1
 --- !u!1 &819296955
 GameObject:
   m_ObjectHideFlags: 0

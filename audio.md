@@ -7,6 +7,7 @@
 - [Bat Hit against Wall](https://freesound.org/people/Kane53126/sounds/257929/), CC0 1.0
 - [Door slam - Gun shot](https://freesound.org/people/coolguy244e/sounds/266915/), CC0 1.0
 - [fast forward2](https://freesound.org/people/ricardri/sounds/23158/), CC0 1.0
+- [Futuristic SMG Sound Effect](https://freesound.org/people/CharlieWD100/sounds/440559/), CC0 1.0
 
 ## Music
 
