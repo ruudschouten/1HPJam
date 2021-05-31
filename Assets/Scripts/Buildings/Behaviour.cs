@@ -6,6 +6,7 @@ using Combat;
 using Core;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Buildings
 {
@@ -22,6 +23,7 @@ namespace Buildings
         
         [SerializeField] private float attackSpeed = 2.5f;
         [SerializeField] private float timeScale = 1;
+        [SerializeField] private UnityEvent onBulletShot;
 
         private List<Enemy> _enemiesInRange = new List<Enemy>();
         [CanBeNull] private Enemy _target;
@@ -72,6 +74,7 @@ namespace Buildings
 
             var bullet = Instantiate(bulletPrefab, aimIndicator.position, Quaternion.identity);
             bullet.StartChasing(_target);
+            onBulletShot.Invoke();
 
             StartCoroutine(CooldownRoutine());
         }

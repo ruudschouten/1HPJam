@@ -68,7 +68,7 @@ namespace Combat
             
             if (!other.CompareTag("Player") && !other.CompareTag("Enemy")) return;
 
-            other.GetComponent<Character>().GetHit();
+            other.GetComponent<Character>().GetHit(DeathCause.Bullet);
             Destroy(gameObject);
         }
     }

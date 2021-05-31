@@ -14,4 +14,9 @@ namespace Events
     {
         // Character, and hit for
     }
+
+    [Serializable]
+    public class CharacterHitEvent : UnityEvent<DeathCause>
+    {
+    }
 }

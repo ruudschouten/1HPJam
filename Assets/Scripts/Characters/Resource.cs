@@ -1,5 +1,4 @@
-﻿using System;
-using Events;
+﻿using Events;
 using Scriptables;
 using UnityEngine;
 
@@ -12,6 +11,7 @@ namespace Characters
 
         [SerializeField] private IntegerReferenceEvent onUseWithoutHavingRequiredAmount;
         [SerializeField] private IntegerReferenceEvent onEnergyUse;
+        [SerializeField] private IntegerReferenceEvent onEnergyReceive;
 
         private void Awake()
         {
@@ -21,6 +21,7 @@ namespace Characters
         public void ReceiveResource(int amount)
         {
             energy.variable.ApplyChange(amount);
+            onEnergyReceive.Invoke(energy, amount);
             if (energy.Value >= maxEnergy.Value)
             {
                 energy.Value = maxEnergy.Value;

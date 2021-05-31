@@ -28,12 +28,12 @@ namespace Characters
         {
             if (other.CompareTag(PlayerTag))
             {
-                player.GetHit();
+                player.GetHit(DeathCause.Trampled);
             }
 
             if (other.CompareTag(FinishTag))
             {
-                player.GetHit();
+                player.GetHit(DeathCause.ReachedKitchen);
             }
         }
     }

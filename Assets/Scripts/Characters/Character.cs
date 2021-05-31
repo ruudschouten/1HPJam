@@ -11,17 +11,17 @@ namespace Characters
         [SerializeField] protected int health = 1;
         [SerializeField] protected Resource resource;
 
-        [Foldout("Events")] [SerializeField] private UnityEvent onHit;
+        [Foldout("Events")] [SerializeField] private CharacterHitEvent onHit;
         [Foldout("Events")] [SerializeField] private CharacterEvent onDeath;
         [Foldout("Events")] [SerializeField] private CharacterEvent onCharacterHit;
 
         public bool IsAlive => health > 0;
         public CharacterEvent OnDeath => onDeath;
 
-        public void GetHit()
+        public void GetHit(DeathCause cause)
         {
             health = 0;
-            onHit.Invoke();
+            onHit.Invoke(cause);
             onDeath.Invoke(this);
         }
 

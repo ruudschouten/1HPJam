@@ -931,7 +931,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 910ddc1e77d94fc8a8126bd598bbefbe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1.5
+  duration: 3.5
   buildTimeScale: 5
   movementSpeedScale: 1.5
 --- !u!1 &8065831538190597893
