@@ -18,6 +18,7 @@ namespace Buildings
         [SerializeField] private Transform aimIndicatorHolder;
         [SerializeField] private Transform aimIndicator;
         [SerializeField] private float aimIndicatorAngleOffset = 90;
+        [SerializeField] private GameObject fastForwardIndicator; 
         
         [SerializeField] private float attackSpeed = 2.5f;
         [SerializeField] private float timeScale = 1;
@@ -34,7 +35,12 @@ namespace Buildings
         public float TimeScale
         {
             get => timeScale;
-            set => timeScale = value;
+            set
+            {
+                timeScale = value;
+                if (timeScale > 1) fastForwardIndicator.SetActive(true);
+                else fastForwardIndicator.SetActive(false);
+            }
         }
 
         private void Update()

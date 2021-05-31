@@ -18,7 +18,7 @@ namespace Characters
         }
         public EnemyMovement Movement => movement;
 
-        private void Update()
+        protected virtual void Update()
         {
             // Follow the path laid out.
             movement.TravelToNextPoint();
